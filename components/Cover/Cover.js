@@ -4,6 +4,7 @@ export const Cover = ({children, background}) => {
     <div className="
       h-screen
       bg-slate-800
+      text-white
       relative min-h-[400px]
       flex
       justify-center
@@ -13,9 +14,11 @@ export const Cover = ({children, background}) => {
         src={background}
         layout="fill"
         objectFit="cover"
-        className="mix-blend-mode-soft-light"
-         />
-        {children}
+        className="mix-blend-soft-light"
+        />
+        <div className="max-w-5xl z-10">
+          {children}
+        </div>
       </div>
   )
 }
