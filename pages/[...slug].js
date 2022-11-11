@@ -1,13 +1,13 @@
 import { gql } from "@apollo/client"
 import client from "client"
-import { BlockRender } from "components/BlockRenderer/BlockRenderer";
+import { BlockRenderer } from "components/BlockRenderer";
 import { cleanAndTransformBlocks } from "utils/cleanAndTransformBlocks";
 
 export default function Page(props) {
   console.log("Page Props:", props)
   return (
     <div>
-      <BlockRender blocks={props.blocks} />
+      <BlockRenderer blocks={props.blocks} />
     </div>
   )
 }

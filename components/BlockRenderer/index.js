@@ -1,1 +1,1 @@
-export * from '.BlockRender'
+export * from "./BlockRenderer"
