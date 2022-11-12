@@ -17,16 +17,22 @@ export const getStaticPaths = async () => {
             uri
           }
         }
+        properties {
+          nodes {
+            uri
+          }
+        }
       }
     `,
-  })
+  });
 
   return {
-    paths: data.pages.nodes.map(page => ({
+    // Combine arrays into one. Create all the url's
+    paths: [...data.pages.nodes, ...data.properties.nodes].map((page) => ({
       params: {
-        slug: page.uri.substring(1, page.uri.length - 1).split("/")
-      }
+        slug: page.uri.substring(1, page.uri.length - 1).split("/"),
+      },
     })),
     fallback: false,
-  }
+  };
 }

@@ -16,6 +16,36 @@ export const getPageStaticProps = async (context) => {
             id
             title
             blocksJSON
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            seo {
+              title
+              metaDesc
+            }
+          }
+          ... on Property {
+            id
+            title
+            blocksJSON
+            seo {
+              title
+              metaDesc
+            }
+            propertyFeatures {
+              bathrooms
+              bedrooms
+              hasParking
+              petFriendly
+              price
+            }
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
           }
         }
         acfOptionsMainMenu {
@@ -51,8 +81,8 @@ export const getPageStaticProps = async (context) => {
       }
     `,
     variables: {
-      uri
-    }
+      uri,
+    },
   });
 
   // clean block data before sending to page.
@@ -60,6 +90,7 @@ export const getPageStaticProps = async (context) => {
 
   return {
     props: {
+      featuredImage: data.nodeByUri.featuredImage?.node?.sourceUrl || null,
       mainMenuItems: mapMainMenuItems(
         data.acfOptionsMainMenu.mainMenu.menuItems
       ),
