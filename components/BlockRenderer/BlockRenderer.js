@@ -1,10 +1,10 @@
+import { CallToActionButton } from "components/CallToActionButton";
 import { Cover } from "components/Cover"
 import { Heading } from "components/Heading"
 import { Paragraph } from "components/Paragraph"
 import { theme } from "theme"
 
 export const BlockRenderer = ({ blocks }) => {
-
   return blocks.map(block => {
     switch (block.name) {
       case "core/cover": {
@@ -12,6 +12,16 @@ export const BlockRenderer = ({ blocks }) => {
           <Cover key={block.id} background={block.attributes.url}>
             <BlockRenderer blocks={block.innerBlocks} />
           </Cover>
+        );
+      }
+      case "acf/ctabutton": {
+        return (
+          <CallToActionButton
+            key={block.id}
+            buttonLabel={block.attributes.data.label}
+            destination={block.attributes.data.destination || "/"}
+            align={block.attributes.data.align}
+          />
         );
       }
       case "core/heading": {

@@ -56,7 +56,7 @@ export const getPageStaticProps = async (context) => {
   });
 
   // clean block data before sending to page.
-  const blocks = cleanAndTransformBlocks(data.nodeByUri.blocksJSON);
+  const blocks = await cleanAndTransformBlocks(data.nodeByUri.blocksJSON);
 
   return {
     props: {
