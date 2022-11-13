@@ -4,6 +4,7 @@ import { Column } from "components/Column";
 import { Cover } from "components/Cover"
 import { Heading } from "components/Heading"
 import { Paragraph } from "components/Paragraph"
+import { PostTitle } from "components/PostTitle"
 import Image from "next/image"
 import { theme } from "theme"
 
@@ -82,6 +83,15 @@ export const BlockRenderer = ({ blocks }) => {
               theme[block.attributes.textColor] ||
               block.attributes.style?.color?.text
             }
+          />
+        );
+      }
+      case "core/post-title": {
+        return (
+          <PostTitle
+            key={block.id}
+            level={block.attributes.level}
+            textAlign={block.attributes.textAlign}
           />
         );
       }
