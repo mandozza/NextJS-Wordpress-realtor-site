@@ -5,6 +5,7 @@ import { Cover } from "components/Cover"
 import { Heading } from "components/Heading"
 import { Paragraph } from "components/Paragraph"
 import { PostTitle } from "components/PostTitle"
+import { PropertySearch } from "components/PropertySearch";
 import Image from "next/image"
 import { theme } from "theme"
 
@@ -73,6 +74,17 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
+      case "core/image": {
+        return (
+          <Image
+            key={block.id}
+            src={block.attributes.url}
+            height={block.attributes.originalHeight}
+            width={block.attributes.originalWidth}
+            alt={block.attributes.alt || ""}
+          />
+        );
+      }
       case "core/paragraph": {
         return (
           <Paragraph
@@ -95,16 +107,8 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
-      case "core/image": {
-        return (
-          <Image
-            key={block.id}
-            src={block.attributes.url}
-            height={block.attributes.originalHeight}
-            width={block.attributes.originalWidth}
-            alt={block.attributes.alt || ""}
-          />
-        );
+      case "acf/propertysearch": {
+        return <PropertySearch key={block.id} />;
       }
       default:
         return null;
